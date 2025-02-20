@@ -8,6 +8,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#f0f2f5",
     paddingHorizontal: 25,
   },
+  image: {
+    width: 200,  // Adjust the width
+    height: 200, // Adjust the height
+    marginBottom: 20, // Space between image and text
+    resizeMode: "contain",
+  },
   title: {
     fontSize: 30,
     fontWeight: "700",

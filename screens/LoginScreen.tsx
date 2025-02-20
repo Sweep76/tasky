@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, Image } from "react-native";
 import styles from "../styles/loginStyles";
 import { useNavigation } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
@@ -15,6 +15,9 @@ const LoginScreen = () => {
 
   return (
     <View style={styles.container}>
+      {/* Add the Image */}
+      <Image source={require("../assets/images/login-background.png")} style={styles.image} />
+      
       <Text style={styles.title}>Login Page</Text>
       <TextInput style={styles.input} placeholder="Email" placeholderTextColor="#888" />
       <TextInput style={styles.input} placeholder="Password" placeholderTextColor="#888" secureTextEntry />

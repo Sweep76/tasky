@@ -8,6 +8,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#f0f2f5",
     paddingHorizontal: 25,
   },
+  image: {
+    width: 150,  // Adjust size as needed
+    height: 150,
+    marginBottom: 20, // Space between image and text
+  },
   title: {
     fontSize: 30,
     fontWeight: "700",
@@ -23,6 +28,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     fontSize: 16,
     marginBottom: 15,
+    borderWidth: 1.5,
+    borderColor: "#ccc",
   },
   button: {
     backgroundColor: "#007bff",
@@ -37,7 +44,6 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 18,
     fontWeight: "bold",
-    letterSpacing: 1,
   },
   forgotPassword: {
     marginTop: 15,

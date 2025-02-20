@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, Image } from "react-native";
 import styles from "../styles/signupStyles";
 import { useNavigation } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
@@ -14,6 +14,9 @@ const SignupScreen = () => {
 
   return (
     <View style={styles.container}>
+      {/* Add Image */}
+      <Image source={require("../assets/images/signup-logo.png")} style={styles.image} />
+
       <Text style={styles.title}>Create Account</Text>
 
       <TextInput style={styles.input} placeholder="Full Name" placeholderTextColor="#888" />
