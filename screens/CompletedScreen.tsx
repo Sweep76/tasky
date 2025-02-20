@@ -12,7 +12,7 @@ interface Task {
 }
 
 const completedTasks: Task[] = [
-  { id: 1, text: "Buy groceries", completed: true },
+  { id: 1, text: "Buy groceries Tomorrow", completed: true },
   { id: 2, text: "Finish project report", completed: true },
   { id: 3, text: "Workout for 30 minutes", completed: true },
   { id: 4, text: "Finish Mobdev Assignment", completed: true },

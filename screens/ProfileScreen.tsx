@@ -1,25 +1,25 @@
 import React from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
-import profileStyles from "../styles/profileStyles"; // Import styles
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { RootStackParamList } from "../navigation";  // ✅ Correct import
+import profileStyles from "../styles/profileStyles";
 
 const ProfileScreen = () => {
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+
   const handleSignOut = () => {
-    console.log("User signed out");
-    // TODO: Implement sign-out logic (e.g., Firebase signOut or navigation reset)
+    navigation.replace("Login");  // Navigate to Login and remove back stack
   };
 
   return (
     <View style={profileStyles.container}>
-      {/* Profile Image */}
       <Image
-        source={{ uri: "https://via.placeholder.com/120" }} // Sample profile image
+        source={{ uri: "https://via.placeholder.com/120" }}
         style={profileStyles.profileImage}
       />
-
-      {/* Username */}
       <Text style={profileStyles.username}>Joshua Chiu</Text>
 
-      {/* Sign Out Button */}
       <TouchableOpacity style={profileStyles.signOutButton} onPress={handleSignOut}>
         <Text style={profileStyles.signOutText}>Sign Out</Text>
       </TouchableOpacity>
