@@ -1,11 +1,40 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, FlatList, StyleSheet } from "react-native";
+import completedStyles from "../styles/completedStyles"; // Import the styles
+
+const styles = completedStyles;
+
+
+interface Task {
+  id: number;
+  text: string;
+  completed: boolean;
+}
+
+const completedTasks: Task[] = [
+  { id: 1, text: "Buy groceries", completed: true },
+  { id: 2, text: "Finish project report", completed: true },
+  { id: 3, text: "Workout for 30 minutes", completed: true },
+  { id: 4, text: "Finish Mobdev Assignment", completed: true },
+];
 
 const CompletedScreen = () => {
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text style={{ fontSize: 24, fontWeight: "bold" }}>Completed Tasks</Text>
-      <Text>No completed tasks yet.</Text>
+    <View style={styles.container}>
+
+      {completedTasks.length === 0 ? (
+        <Text style={styles.emptyText}>No completed tasks yet.</Text>
+      ) : (
+        <FlatList
+          data={completedTasks}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={({ item }) => (
+            <View style={styles.taskItem}>
+              <Text style={styles.completedText}>{item.text}</Text>
+            </View>
+          )}
+        />
+      )}
     </View>
   );
 };
