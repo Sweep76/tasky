@@ -17,12 +17,12 @@ npx expo start  # Start the app
 📦 Dependencies
 The project requires the following dependencies:
 
-React Native - Core framework
-Expo - Development environment
-React Navigation - Navigation handling
-@react-navigation/native
-@react-navigation/native-stack
-@react-navigation/bottom-tabs
-react-native-screens
-react-native-safe-area-context
-react-native-vector-icons
+- React Native - Core framework
+- Expo - Development environment
+- React Navigation - Navigation handling
+- @react-navigation/native
+- @react-navigation/native-stack
+- @react-navigation/bottom-tabs
+- react-native-screens
+- react-native-safe-area-context
+- react-native-vector-icons
