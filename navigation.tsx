@@ -11,11 +11,12 @@ import CompletedScreen from "./screens/CompletedScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 
 // Define types for the navigation params
-type RootStackParamList = {
-  Login: undefined;
-  Signup: undefined;
-  MainApp: undefined;
-};
+export type RootStackParamList = {  // <-- Add `export`
+    Login: undefined;
+    Signup: undefined;
+    MainApp: undefined;
+  };
+  
 
 type TabParamList = {
   ToDo: undefined;
