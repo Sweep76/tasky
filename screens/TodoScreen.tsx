@@ -1,48 +1,120 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, Button, FlatList, TouchableOpacity } from "react-native";
+import { View, Text, FlatList, TouchableOpacity, TextInput, Modal, Button } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import styles from "../styles/ToDoScreenStyles";
 
-const TodoScreen = () => {
-  const [tasks, setTasks] = useState<string[]>([]);
-  const [task, setTask] = useState("");
+interface Task {
+  id: number;
+  text: string;
+  completed: boolean;
+}
 
+export default function ToDoScreen() {
+  const [tasks, setTasks] = useState<Task[]>([]);
+  const [taskText, setTaskText] = useState("");
+  const [editTask, setEditTask] = useState<Task | null>(null);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [editText, setEditText] = useState("");
+
+  // Add Task
   const addTask = () => {
-    if (task.trim() !== "") {
-      setTasks([...tasks, task]);
-      setTask("");
-    }
+    if (taskText.trim() === "") return;
+    const newTask: Task = { id: Date.now(), text: taskText, completed: false };
+    setTasks([...tasks, newTask]);
+    setTaskText("");
   };
 
-  const deleteTask = (index: number) => {
-    const updatedTasks = [...tasks];
-    updatedTasks.splice(index, 1);
-    setTasks(updatedTasks);
+  // Delete Task
+  const deleteTask = (id: number) => {
+    setTasks(tasks.filter((task) => task.id !== id));
+  };
+
+  // Mark Task as Completed
+  const completeTask = (id: number) => {
+    setTasks(
+      tasks.map((task) =>
+        task.id === id ? { ...task, completed: !task.completed } : task
+      )
+    );
+  };
+
+  // Open Edit Modal
+  const startEditing = (task: Task) => {
+    setEditTask(task);
+    setEditText(task.text);
+    setModalVisible(true);
+  };
+
+  // Save Edited Task
+  const saveEdit = () => {
+    if (editTask) {
+      setTasks(
+        tasks.map((task) =>
+          task.id === editTask.id ? { ...task, text: editText } : task
+        )
+      );
+    }
+    setModalVisible(false);
+    setEditTask(null);
   };
 
   return (
-    <View style={{ padding: 20 }}>
-      <Text style={{ fontSize: 24, fontWeight: "bold" }}>To-Do List</Text>
-      <TextInput
-        placeholder="Enter task..."
-        value={task}
-        onChangeText={setTask}
-        style={{ borderWidth: 1, padding: 10, marginVertical: 10 }}
-      />
-      <Button title="Add Task" onPress={addTask} />
-
+    <View style={styles.container}>
       <FlatList
         data={tasks}
-        keyExtractor={(item, index) => index.toString()}
-        renderItem={({ item, index }) => (
-          <View style={{ flexDirection: "row", justifyContent: "space-between", marginVertical: 5 }}>
-            <Text>{item}</Text>
-            <TouchableOpacity onPress={() => deleteTask(index)}>
-              <Text style={{ color: "red" }}>Delete</Text>
-            </TouchableOpacity>
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={({ item }) => (
+          <View style={styles.taskItem}>
+            <Text style={item.completed ? styles.completedText : styles.taskText}>
+              {item.text}
+            </Text>
+            <View style={styles.taskButtons}>
+              <TouchableOpacity onPress={() => completeTask(item.id)}>
+                <Ionicons name="checkmark-circle-outline" size={24} color="green" />
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => startEditing(item)}>
+                <Ionicons name="pencil-outline" size={24} color="orange" />
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => deleteTask(item.id)}>
+                <Ionicons name="trash-outline" size={24} color="red" />
+              </TouchableOpacity>
+            </View>
           </View>
         )}
       />
+
+      {/* Add Task Input */}
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.input}
+          placeholder="Enter a Task..."
+          value={taskText}
+          onChangeText={setTaskText}
+        />
+      </View>
+
+      {/* Floating Add Button */}
+      <TouchableOpacity style={styles.addButton} onPress={addTask}>
+        <Ionicons name="add" size={32} color="white" />
+      </TouchableOpacity>
+
+      {/* Edit Task Modal */}
+      <Modal visible={modalVisible} animationType="slide" transparent={true}>
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <Text style={styles.modalTitle}>Edit Task</Text>
+            <TextInput
+              style={styles.modalInput}
+              value={editText}
+              onChangeText={setEditText}
+            />
+            <View style={styles.modalButtons}>
+              <Button title="Cancel" onPress={() => setModalVisible(false)} color="gray" />
+              <Button title="Save" onPress={saveEdit} color="#007bff" />
+            </View>
+          </View>
+        </View>
+      </Modal>
     </View>
   );
-};
-
-export default TodoScreen;
+}
