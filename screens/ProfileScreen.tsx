@@ -1,14 +1,28 @@
 import React from "react";
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, TouchableOpacity } from "react-native";
+import profileStyles from "../styles/profileStyles"; // Import styles
 
 const ProfileScreen = () => {
+  const handleSignOut = () => {
+    console.log("User signed out");
+    // TODO: Implement sign-out logic (e.g., Firebase signOut or navigation reset)
+  };
+
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+    <View style={profileStyles.container}>
+      {/* Profile Image */}
       <Image
-        source={{ uri: "https://via.placeholder.com/100" }} // Sample profile image
-        style={{ width: 100, height: 100, borderRadius: 50, marginBottom: 10 }}
+        source={{ uri: "https://via.placeholder.com/120" }} // Sample profile image
+        style={profileStyles.profileImage}
       />
-      <Text style={{ fontSize: 20, fontWeight: "bold" }}>Joshua Chiu</Text>
+
+      {/* Username */}
+      <Text style={profileStyles.username}>Joshua Chiu</Text>
+
+      {/* Sign Out Button */}
+      <TouchableOpacity style={profileStyles.signOutButton} onPress={handleSignOut}>
+        <Text style={profileStyles.signOutText}>Sign Out</Text>
+      </TouchableOpacity>
     </View>
   );
 };
