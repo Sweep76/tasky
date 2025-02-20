@@ -10,7 +10,8 @@ Follow these steps to set up and run the project:
 git clone https://github.com/Sweep76/tasky  
 cd tasky  
 npm install  # Install dependencies  
-npx expo start  # Start the app  
+npx expo start  # Start the app
+```  
 
 
 📦 Dependencies
