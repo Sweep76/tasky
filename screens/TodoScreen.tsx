@@ -158,7 +158,7 @@ export default function ToDoScreen() {
       </Modal>
 
       {/* Edit Task Modal */}
-      <Modal visible={editModalVisible} animationType="slide" transparent={true}>
+      <Modal visible={editModalVisible} animationType="fade" transparent={true}>
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>Edit Task</Text>

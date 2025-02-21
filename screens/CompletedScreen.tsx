@@ -79,7 +79,7 @@ const CompletedScreen = () => {
       )}
 
       {/* Edit Task Modal */}
-      <Modal visible={modalVisible} animationType="slide" transparent>
+      <Modal visible={modalVisible} animationType="fade" transparent>
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>Edit Task</Text>
