@@ -107,34 +107,32 @@ export default function ToDoScreen() {
               <Text style={item.completed ? styles.completedText : styles.taskTitle}>
                 {item.title}
               </Text>
-              <TouchableOpacity onPress={() => toggleExpandTask(item.id)}>
-                <Ionicons
-                  name={expandedTasks[item.id] ? "chevron-up-outline" : "chevron-down-outline"}
-                  size={24}
-                  color="black"
-                />
-              </TouchableOpacity>
-            </View>
-
-            {expandedTasks[item.id] && <Text style={styles.taskDetails}>{item.details}</Text>}
-
             <View style={styles.taskButtons}>
-            <TouchableOpacity onPress={() => deleteTask(item.id)}>
-                <Ionicons name="trash-outline" size={30} color="red" />
+              <TouchableOpacity onPress={() => deleteTask(item.id)}>
+                  <Ionicons name="trash-outline" size={27} color="red" />
               </TouchableOpacity>
               <TouchableOpacity onPress={() => startEditing(item)}>
-                <Ionicons name="create-outline" size={30} color="blue" />
+                  <Ionicons name="create-outline" size={27} color="darkblue" />
               </TouchableOpacity>
               <TouchableOpacity onPress={() => completeTask(item.id)}>
-                <Ionicons name="checkbox-outline" size={30} color="green" />
+                  <Ionicons name="checkbox-outline" size={27} color="green" />
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => toggleExpandTask(item.id)}>
+                  <Ionicons
+                    name={expandedTasks[item.id] ? "chevron-up-outline" : "chevron-down-outline"}
+                    size={27}
+                    color="black"
+                  />
               </TouchableOpacity>
             </View>
+            </View>
+            {expandedTasks[item.id] && <Text style={styles.taskDetails}>{item.details}</Text>}
           </View>
         )}
       />
 
       <TouchableOpacity style={styles.addButton} onPress={() => setModalVisible(true)}>
-        <Ionicons name="add" size={32} color="white" />
+        <Ionicons name="add" size={30} color="white" />
       </TouchableOpacity>
 
       {/* Add Task Modal */}
@@ -153,7 +151,7 @@ export default function ToDoScreen() {
             />
             <View style={styles.modalButtons}>
               <Button title="Cancel" onPress={() => setModalVisible(false)} color="red" />
-              <Button title="Add Task" onPress={addTask} color="#007bff" />
+              <Button title="Add Task" onPress={addTask} color="darkblue" />
             </View>
           </View>
         </View>
@@ -166,15 +164,15 @@ export default function ToDoScreen() {
             <Text style={styles.modalTitle}>Edit Task</Text>
             <TextInput style={styles.modalInput} value={editTitle} onChangeText={setEditTitle} placeholder="Edit Title" />
             <TextInput
-              style={[styles.modalInput, { height: 200, textAlignVertical: "top" }]}
+              style={[styles.modalInput, { height: 250, textAlignVertical: "top" }]}
               value={editDetails}
               onChangeText={setEditDetails}
               placeholder="Edit Details"
               multiline
-              numberOfLines={4}
+              numberOfLines={13} // no of lines displayed
             />
             <View style={styles.modalButtons}>
-              <Button title="Cancel" onPress={() => setEditModalVisible(false)} color="gray" />
+              <Button title="Cancel" onPress={() => setEditModalVisible(false)} color="red" />
               <Button title="Save" onPress={saveEdit} color="#007bff" />
             </View>
           </View>

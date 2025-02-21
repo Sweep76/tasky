@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0.8,
   },
   description: {
-    fontSize: 16,
+    fontSize: 20,
     color: "#222",
     marginBottom: 50,
   },
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     borderColor: "#ccc",
   },
   button: {
-    backgroundColor: "#007bff",
+    backgroundColor: "darkblue",
     width: "100%",
     height: 50,
     justifyContent: "center",

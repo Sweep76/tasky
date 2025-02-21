@@ -32,6 +32,7 @@ const profileStyles = StyleSheet.create({
     shadowRadius: 5,
     elevation: 5,
     marginTop: 20,
+    width: "75%",
   },
   signOutText: {
     color: "#fff",
@@ -39,6 +40,7 @@ const profileStyles = StyleSheet.create({
     fontWeight: "bold",
     fontFamily: "Arial",
     letterSpacing: 1,
+    textAlign: "center",
   },
 });
 

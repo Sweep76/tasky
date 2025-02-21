@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     borderColor: "#ccc",
   },
   button: {
-    backgroundColor: "#27ae60",
+    backgroundColor: "darkblue",
     width: "100%",
     height: 50,
     justifyContent: "center",
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
   },
   signupLink: {
     fontSize: 14,
-    color: "#27ae60",
+    color: "#007bff",
     fontWeight: "bold",
     marginLeft: 5,
   },

@@ -9,14 +9,14 @@ const styles = StyleSheet.create({
   taskItem: {
     backgroundColor: "#e9ecef",
     padding: 15,
-    borderRadius: 10,
+    borderRadius: 15,
     marginBottom: 10,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 2,
-    borderColor: "grey",
+    borderColor: "black",
     borderWidth: 1,
   },
   taskHeader: {
@@ -54,8 +54,8 @@ const styles = StyleSheet.create({
   addButton: {
     position: "absolute",
     bottom: 20,
-    right: 20,
-    backgroundColor: "#007bff",
+    alignSelf: "center", // Centers horizontally
+    backgroundColor: "darkblue",
     width: 60,
     height: 60,
     borderRadius: 30,
@@ -74,11 +74,13 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(0,0,0,0.5)",
   },
   modalContent: {
-    width: "85%",
+    width: "95%",
     backgroundColor: "white",
     padding: 20,
     borderRadius: 10,
     elevation: 5,
+    borderColor: "black",
+    borderWidth: 1,
   },
   modalTitle: {
     fontSize: 20,
