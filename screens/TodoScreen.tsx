@@ -102,32 +102,32 @@ export default function ToDoScreen() {
         data={tasks}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
-          <View style={styles.taskItem}>
+          <TouchableOpacity
+            style={styles.taskItem}
+            onPress={() => startEditing(item)} // Trigger edit on container tap
+          >
             <View style={styles.taskHeader}>
               <Text style={item.completed ? styles.completedText : styles.taskTitle}>
                 {item.title}
               </Text>
-            <View style={styles.taskButtons}>
-              <TouchableOpacity onPress={() => deleteTask(item.id)}>
+              <View style={styles.taskButtons}>
+                <TouchableOpacity onPress={() => deleteTask(item.id)}>
                   <Ionicons name="trash-outline" size={27} color="red" />
-              </TouchableOpacity>
-              <TouchableOpacity onPress={() => startEditing(item)}>
-                  <Ionicons name="create-outline" size={27} color="darkblue" />
-              </TouchableOpacity>
-              <TouchableOpacity onPress={() => completeTask(item.id)}>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => completeTask(item.id)}>
                   <Ionicons name="checkbox-outline" size={27} color="green" />
-              </TouchableOpacity>
-              <TouchableOpacity onPress={() => toggleExpandTask(item.id)}>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => toggleExpandTask(item.id)}>
                   <Ionicons
                     name={expandedTasks[item.id] ? "chevron-up-outline" : "chevron-down-outline"}
                     size={27}
                     color="black"
                   />
-              </TouchableOpacity>
-            </View>
+                </TouchableOpacity>
+              </View>
             </View>
             {expandedTasks[item.id] && <Text style={styles.taskDetails}>{item.details}</Text>}
-          </View>
+          </TouchableOpacity>
         )}
       />
 

@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   taskItem: {
-    backgroundColor: "#e9ecef",
+    backgroundColor: "#ffffff",
     padding: 15,
     borderRadius: 15,
     marginBottom: 10,
@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 2,
-    borderColor: "black",
+    borderColor: "lightgrey",
     borderWidth: 1,
   },
   taskHeader: {
