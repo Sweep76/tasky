@@ -1,61 +1,58 @@
 import { StyleSheet } from "react-native";
 
-const styles = StyleSheet.create({
+export default StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: "#f4f4f4",
+    backgroundColor: "#f8f8f8",
   },
   taskItem: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
     backgroundColor: "#fff",
     padding: 15,
-    borderRadius: 12,
-    marginBottom: 10,
-    borderWidth: 1,
-    borderColor: "#ddd",
+    borderRadius: 10,
+    marginVertical: 8,
+    elevation: 2,
   },
-  taskText: {
-    fontSize: 16,
-    color: "#222",
+  taskTitle: {
+    fontSize: 18,
+    fontWeight: "bold",
+  },
+  taskDetails: {
+    fontSize: 14,
+    color: "#666",
+    marginTop: 4,
   },
   completedText: {
-    fontSize: 16,
-    color: "#aaa",
+    fontSize: 18,
+    fontWeight: "bold",
     textDecorationLine: "line-through",
+    color: "gray",
   },
   taskButtons: {
     flexDirection: "row",
-    gap: 10,
+    justifyContent: "space-between",
+    marginTop: 10,
   },
   inputContainer: {
-    flexDirection: "row",
-    padding: 12,
-    marginTop: 12,
-    backgroundColor: "#fff",
-    borderRadius: 10,
-    borderWidth: 1,
-    borderColor: "#ddd",
+    flexDirection: "column",
+    gap: 10,
+    padding: 10,
   },
   input: {
-    flex: 1,
-    padding: 12,
-    fontSize: 16,
-    borderRadius: 8,
-    backgroundColor: "#f9f9f9",
+    backgroundColor: "#fff",
+    padding: 10,
+    borderRadius: 5,
+    borderColor: "#ddd",
+    borderWidth: 1,
   },
   addButton: {
     position: "absolute",
-    bottom: 80, // Adjusted to be above the menu
+    bottom: 20,
     right: 20,
     backgroundColor: "#007bff",
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-    justifyContent: "center",
-    alignItems: "center",
+    borderRadius: 50,
+    padding: 15,
+    elevation: 5,
   },
   modalContainer: {
     flex: 1,
@@ -64,25 +61,25 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(0,0,0,0.5)",
   },
   modalContent: {
-    width: "85%",
     backgroundColor: "#fff",
     padding: 20,
-    borderRadius: 12,
+    borderRadius: 10,
+    width: "80%",
     alignItems: "center",
   },
   modalTitle: {
-    fontSize: 18,
-    fontWeight: "600",
+    fontSize: 20,
+    fontWeight: "bold",
     marginBottom: 10,
   },
   modalInput: {
     width: "100%",
-    padding: 12,
-    fontSize: 16,
-    borderRadius: 8,
-    borderWidth: 1,
+    padding: 10,
+    marginVertical: 10,
+    borderRadius: 5,
+    backgroundColor: "#fff",
     borderColor: "#ddd",
-    marginBottom: 15,
+    borderWidth: 1,
   },
   modalButtons: {
     flexDirection: "row",
@@ -90,5 +87,3 @@ const styles = StyleSheet.create({
     width: "100%",
   },
 });
-
-export default styles;

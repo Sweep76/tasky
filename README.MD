@@ -13,6 +13,8 @@ npm install  # Install dependencies
 npx expo start  # Start the app
 ```  
 
+Make sure you have EXPO go for Android/IOS emulation
+
 
 📦 Dependencies
 The project requires the following dependencies:
@@ -26,3 +28,6 @@ The project requires the following dependencies:
 - react-native-screens
 - react-native-safe-area-context
 - react-native-vector-icons
+- npm install react-native-svg
+- npm install react-native-svg react-native-svg-transformer --save
+- npm install @react-native-async-storage/async-storage

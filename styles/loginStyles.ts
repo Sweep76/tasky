@@ -17,8 +17,13 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: "700",
     color: "#222",
-    marginBottom: 25,
+    marginBottom: 10,
     letterSpacing: 0.8,
+  },
+  description: {
+    fontSize: 16,
+    color: "#222",
+    marginBottom: 50,
   },
   input: {
     width: "100%",
@@ -64,6 +69,11 @@ const styles = StyleSheet.create({
     color: "#007bff",
     fontWeight: "bold",
     marginLeft: 5,
+  },
+  backgroundImage: {
+    position: "absolute",
+    width: "100%",
+    height: "100%",
   },
 });
 

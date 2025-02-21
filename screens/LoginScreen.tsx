@@ -19,7 +19,8 @@ const LoginScreen = () => {
       <Image source={require("../assets/images/login-background.png")} style={styles.image} />
       
       <Text style={styles.title}>Login Page</Text>
-      <TextInput style={styles.input} placeholder="Email" placeholderTextColor="#888" />
+      <Text style={styles.description}>You got things to do</Text>
+      <TextInput style={styles.input} placeholder="Username" placeholderTextColor="#888" />
       <TextInput style={styles.input} placeholder="Password" placeholderTextColor="#888" secureTextEntry />
 
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("MainApp")}>

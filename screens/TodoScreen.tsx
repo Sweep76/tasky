@@ -1,27 +1,65 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, FlatList, TouchableOpacity, TextInput, Modal, Button } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import styles from "../styles/ToDoScreenStyles";
 
 interface Task {
   id: number;
-  text: string;
+  title: string;
+  details: string;
   completed: boolean;
 }
 
 export default function ToDoScreen() {
   const [tasks, setTasks] = useState<Task[]>([]);
-  const [taskText, setTaskText] = useState("");
-  const [editTask, setEditTask] = useState<Task | null>(null);
+  const [taskTitle, setTaskTitle] = useState("");
+  const [taskDetails, setTaskDetails] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
-  const [editText, setEditText] = useState("");
+  const [editTask, setEditTask] = useState<Task | null>(null);
+  const [editTitle, setEditTitle] = useState("");
+  const [editDetails, setEditDetails] = useState("");
+  const [editModalVisible, setEditModalVisible] = useState(false);
+
+  // Load tasks from AsyncStorage when the component mounts
+  useEffect(() => {
+    loadTasks();
+  }, []);
+
+  // Save tasks whenever they change
+  useEffect(() => {
+    saveTasks();
+  }, [tasks]);
+
+  // Function to load tasks from AsyncStorage
+  const loadTasks = async () => {
+    try {
+      const storedTasks = await AsyncStorage.getItem("tasks");
+      if (storedTasks) {
+        setTasks(JSON.parse(storedTasks));
+      }
+    } catch (error) {
+      console.error("Failed to load tasks:", error);
+    }
+  };
+
+  // Function to save tasks to AsyncStorage
+  const saveTasks = async () => {
+    try {
+      await AsyncStorage.setItem("tasks", JSON.stringify(tasks));
+    } catch (error) {
+      console.error("Failed to save tasks:", error);
+    }
+  };
 
   // Add Task
   const addTask = () => {
-    if (taskText.trim() === "") return;
-    const newTask: Task = { id: Date.now(), text: taskText, completed: false };
+    if (taskTitle.trim() === "" || taskDetails.trim() === "") return;
+    const newTask: Task = { id: Date.now(), title: taskTitle, details: taskDetails, completed: false };
     setTasks([...tasks, newTask]);
-    setTaskText("");
+    setTaskTitle("");
+    setTaskDetails("");
+    setModalVisible(false);
   };
 
   // Delete Task
@@ -41,8 +79,9 @@ export default function ToDoScreen() {
   // Open Edit Modal
   const startEditing = (task: Task) => {
     setEditTask(task);
-    setEditText(task.text);
-    setModalVisible(true);
+    setEditTitle(task.title);
+    setEditDetails(task.details);
+    setEditModalVisible(true);
   };
 
   // Save Edited Task
@@ -50,11 +89,11 @@ export default function ToDoScreen() {
     if (editTask) {
       setTasks(
         tasks.map((task) =>
-          task.id === editTask.id ? { ...task, text: editText } : task
+          task.id === editTask.id ? { ...task, title: editTitle, details: editDetails } : task
         )
       );
     }
-    setModalVisible(false);
+    setEditModalVisible(false);
     setEditTask(null);
   };
 
@@ -65,9 +104,11 @@ export default function ToDoScreen() {
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
           <View style={styles.taskItem}>
-            <Text style={item.completed ? styles.completedText : styles.taskText}>
-              {item.text}
+            <Text style={item.completed ? styles.completedText : styles.taskTitle}>
+              {item.title}
             </Text>
+            <Text style={styles.taskDetails}>{item.details}</Text>
+
             <View style={styles.taskButtons}>
               <TouchableOpacity onPress={() => completeTask(item.id)}>
                 <Ionicons name="checkmark-circle-outline" size={24} color="green" />
@@ -83,33 +124,59 @@ export default function ToDoScreen() {
         )}
       />
 
-      {/* Add Task Input */}
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.input}
-          placeholder="Enter a Task..."
-          value={taskText}
-          onChangeText={setTaskText}
-        />
-      </View>
-
       {/* Floating Add Button */}
-      <TouchableOpacity style={styles.addButton} onPress={addTask}>
+      <TouchableOpacity style={styles.addButton} onPress={() => setModalVisible(true)}>
         <Ionicons name="add" size={32} color="white" />
       </TouchableOpacity>
 
-      {/* Edit Task Modal */}
+      {/* Add Task Modal */}
       <Modal visible={modalVisible} animationType="slide" transparent={true}>
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <Text style={styles.modalTitle}>Add Task</Text>
+            <TextInput
+              style={styles.modalInput}
+              placeholder="Task Title"
+              value={taskTitle}
+              onChangeText={setTaskTitle}
+            />
+            <TextInput
+              style={[styles.modalInput, { height: 100, textAlignVertical: "top" }]}
+              placeholder="Task Details"
+              value={taskDetails}
+              onChangeText={setTaskDetails}
+              multiline
+              numberOfLines={4}
+            />
+            <View style={styles.modalButtons}>
+              <Button title="Cancel" onPress={() => setModalVisible(false)} color="gray" />
+              <Button title="Add Task" onPress={addTask} color="#007bff" />
+            </View>
+          </View>
+        </View>
+      </Modal>
+
+      {/* Edit Task Modal */}
+      <Modal visible={editModalVisible} animationType="slide" transparent={true}>
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>Edit Task</Text>
             <TextInput
               style={styles.modalInput}
-              value={editText}
-              onChangeText={setEditText}
+              value={editTitle}
+              onChangeText={setEditTitle}
+              placeholder="Edit Title"
+            />
+            <TextInput
+              style={[styles.modalInput, { height: 100, textAlignVertical: "top" }]}
+              value={editDetails}
+              onChangeText={setEditDetails}
+              placeholder="Edit Details"
+              multiline
+              numberOfLines={4}
             />
             <View style={styles.modalButtons}>
-              <Button title="Cancel" onPress={() => setModalVisible(false)} color="gray" />
+              <Button title="Cancel" onPress={() => setEditModalVisible(false)} color="gray" />
               <Button title="Save" onPress={saveEdit} color="#007bff" />
             </View>
           </View>
