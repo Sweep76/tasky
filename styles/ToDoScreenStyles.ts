@@ -25,8 +25,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   taskTitle: {
-    fontSize: 18,
-    fontWeight: "bold",
+    fontSize: 19,
+    fontWeight: "medium",
     flexShrink: 1,
     color: "#333",
   },
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
   },
   taskDetails: {
     marginTop: 5,
-    fontSize: 16,
+    fontSize: 14,
     color: "#555",
   },
   taskButtons: {
