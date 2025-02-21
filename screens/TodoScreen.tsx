@@ -123,10 +123,10 @@ export default function ToDoScreen() {
                 <Ionicons name="trash-outline" size={30} color="red" />
               </TouchableOpacity>
               <TouchableOpacity onPress={() => startEditing(item)}>
-                <Ionicons name="pencil-outline" size={30} color="blue" />
+                <Ionicons name="create-outline" size={30} color="blue" />
               </TouchableOpacity>
               <TouchableOpacity onPress={() => completeTask(item.id)}>
-                <Ionicons name="checkmark-circle-outline" size={30} color="green" />
+                <Ionicons name="checkbox-outline" size={30} color="green" />
               </TouchableOpacity>
             </View>
           </View>
@@ -166,7 +166,7 @@ export default function ToDoScreen() {
             <Text style={styles.modalTitle}>Edit Task</Text>
             <TextInput style={styles.modalInput} value={editTitle} onChangeText={setEditTitle} placeholder="Edit Title" />
             <TextInput
-              style={[styles.modalInput, { height: 100, textAlignVertical: "top" }]}
+              style={[styles.modalInput, { height: 200, textAlignVertical: "top" }]}
               value={editDetails}
               onChangeText={setEditDetails}
               placeholder="Edit Details"
