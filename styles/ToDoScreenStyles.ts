@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
   taskButtons: {
     flexDirection: "row",
     justifyContent: "flex-end", // Align buttons to the right
-    marginTop: 15,
+    marginTop: 5,
     gap: 10, // Add space between buttons
     // flexDirection: "row",
     // justifyContent: "space-between",
