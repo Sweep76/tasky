@@ -119,14 +119,14 @@ export default function ToDoScreen() {
             {expandedTasks[item.id] && <Text style={styles.taskDetails}>{item.details}</Text>}
 
             <View style={styles.taskButtons}>
-              <TouchableOpacity onPress={() => completeTask(item.id)}>
-                <Ionicons name="checkmark-circle-outline" size={30} color="green" />
+            <TouchableOpacity onPress={() => deleteTask(item.id)}>
+                <Ionicons name="trash-outline" size={30} color="red" />
               </TouchableOpacity>
               <TouchableOpacity onPress={() => startEditing(item)}>
                 <Ionicons name="pencil-outline" size={30} color="blue" />
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => deleteTask(item.id)}>
-                <Ionicons name="trash-outline" size={30} color="red" />
+              <TouchableOpacity onPress={() => completeTask(item.id)}>
+                <Ionicons name="checkmark-circle-outline" size={30} color="green" />
               </TouchableOpacity>
             </View>
           </View>
