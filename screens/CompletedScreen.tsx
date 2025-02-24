@@ -23,7 +23,7 @@ const CompletedScreen = () => {
     { id: 1, text: "Buy groceries Tomorrow", completed: true },
     { id: 2, text: "Finish project report", completed: true },
     { id: 3, text: "Workout for 30 minutes", completed: true },
-    { id: 4, text: "Finish Mobdevs Assignment", completed: true },
+    { id: 4, text: "Finish Mobdevs Assignment Yet", completed: true },
   ]);
 
   const [modalVisible, setModalVisible] = useState(false);
