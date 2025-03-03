@@ -20,11 +20,11 @@ const SignupScreen = () => {
       <Text style={styles.title}>Create Account</Text>
 
       <TextInput style={styles.input} placeholder="Full Name" placeholderTextColor="#888" />
-      <TextInput style={styles.input} placeholder="Email" placeholderTextColor="#888" />
+      <TextInput style={styles.input} placeholder="Email Address" placeholderTextColor="#888" />
       <TextInput style={styles.input} placeholder="Password" placeholderTextColor="#888" secureTextEntry />
       <TextInput style={styles.input} placeholder="Confirm Password" placeholderTextColor="#888" secureTextEntry />
 
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Login")}>
         <Text style={styles.buttonText}>Sign Up</Text>
       </TouchableOpacity>
 

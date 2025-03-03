@@ -13,6 +13,10 @@ const ProfileScreen = () => {
     navigation.replace("Login");
   };
 
+  // const handleSample = () => {
+  //   navigation.replace("SampleScreen");
+  // };
+
   return (
     <View style={profileStyles.container}>
       {/* Profile Icon */}
@@ -23,6 +27,9 @@ const ProfileScreen = () => {
       <TouchableOpacity style={profileStyles.signOutButton} onPress={handleSignOut}>
         <Text style={profileStyles.signOutText}>Sign Out</Text>
       </TouchableOpacity>
+      {/* <TouchableOpacity style={profileStyles.signOutButton} onPress={handleSample}>
+        <Text style={profileStyles.signOutText}>Sample</Text>
+      </TouchableOpacity> */}
     </View>
   );
 };

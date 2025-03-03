@@ -18,7 +18,7 @@ const LoginScreen = () => {
       {/* Add the Image */}
       <Image source={require("../assets/images/login-background.png")} style={styles.image} />
       
-      <Text style={styles.title}>Login Page</Text>
+      <Text style={styles.title}>Welcome Back!</Text>
       <Text style={styles.description}>You got things to do</Text>
       <TextInput style={styles.input} placeholder="Username" placeholderTextColor="#888" />
       <TextInput style={styles.input} placeholder="Password" placeholderTextColor="#888" secureTextEntry />
@@ -26,17 +26,16 @@ const LoginScreen = () => {
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("MainApp")}>
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
-
-      <TouchableOpacity>
-        <Text style={styles.forgotPassword}>Forgot the Password?</Text>
+      <TouchableOpacity style={styles.signupbutton} onPress={() => navigation.navigate("Signup")}>
+        <Text style={styles.buttonText}>Sign Up</Text>
       </TouchableOpacity>
 
-      <View style={styles.signupContainer}>
+      {/* <View style={styles.signupContainer}>
         <Text style={styles.signupText}>Don't have an account?</Text>
         <TouchableOpacity onPress={() => navigation.navigate("Signup")}>
           <Text style={styles.signupLink}> Sign Up</Text>
         </TouchableOpacity>
-      </View>
+      </View> */}
     </View>
   );
 };

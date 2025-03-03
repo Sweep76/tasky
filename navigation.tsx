@@ -10,16 +10,25 @@ import TodoScreen from "./screens/TodoScreen";
 import CompletedScreen from "./screens/CompletedScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 
+// unused Screens
+import AddTaskScreen from "./screens/AddTaskScreen";
+import EditTaskScreen from "./screens/EditTaskScreen";
+import SampleScreen from "./screens/SampleScreen";
+
 // Define types for the navigation params
 export type RootStackParamList = {  // <-- Add `export`
     Login: undefined;
     Signup: undefined;
     MainApp: undefined;
+    // unused exports
+    AddTask: undefined;
+    EditTask: undefined;
+    SampleScreen: undefined;
   };
   
 
 type TabParamList = {
-  ToDo: undefined;
+  ToDos: undefined;
   Completed: undefined;
   Profile: undefined;
 };
@@ -46,7 +55,7 @@ function BottomTabNavigator() {
         tabBarInactiveTintColor: "gray",
       })}
     >
-      <Tab.Screen name="ToDo" component={TodoScreen} />
+      <Tab.Screen name="ToDos" component={TodoScreen} />
       <Tab.Screen name="Completed" component={CompletedScreen} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
     </Tab.Navigator>
@@ -57,10 +66,13 @@ function BottomTabNavigator() {
 export default function AppNavigator() {
   return (
     <NavigationContainer>
+      {/* make sure to add your screens here if you need separate */}
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Signup" component={SignupScreen} />
         <Stack.Screen name="MainApp" component={BottomTabNavigator} />
+        {/* unused screens */}
+        <Stack.Screen name="SampleScreen" component={SampleScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

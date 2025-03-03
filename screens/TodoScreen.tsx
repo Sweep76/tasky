@@ -142,12 +142,12 @@ export default function ToDoScreen() {
             <Text style={styles.modalTitle}>Add Task</Text>
             <TextInput style={styles.modalInput} placeholder="Task Title" value={taskTitle} onChangeText={setTaskTitle} />
             <TextInput
-              style={[styles.modalInput, { height: 600, textAlignVertical: "top" }]}
+              style={[styles.modalInput, { height: 250, textAlignVertical: "top" }]}
               placeholder="Task Details"
               value={taskDetails}
               onChangeText={setTaskDetails}
               multiline
-              numberOfLines={30}
+              numberOfLines={13}
             />
             <View style={styles.modalButtons}>
               <Button title="Cancel" onPress={() => setModalVisible(false)} color="red" />
@@ -173,7 +173,7 @@ export default function ToDoScreen() {
             />
             <View style={styles.modalButtons}>
               <Button title="Cancel" onPress={() => setEditModalVisible(false)} color="red" />
-              <Button title="Save" onPress={saveEdit} color="#007bff" />
+              <Button title="Save" onPress={saveEdit} color="darkblue" />
             </View>
           </View>
         </View>
